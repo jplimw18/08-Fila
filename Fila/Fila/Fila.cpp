@@ -86,15 +86,42 @@ void insere()
 
 	cout << "Digite o elemento: ";
 	cin >> novo->valor;
+
+	if (fim == NULL || inicio == NULL)
+	{
+		inicio = novo;
+	}
+	else
+	{
+		NO* aux = fim;
+		aux->prox = novo;
+	}
+
 	novo->prox = NULL;
-
-
+	fim = novo;
 }
 
 void remove()
 {
+	if (inicio == NULL)
+	{
+		cout << "A fila esta vazia." << endl;
+		return;
+	}
 
+	NO* toDelete = inicio;
+	
+	if (toDelete->prox == NULL)
+	{
+		inicio = NULL;
+		fim = NULL;
+	}
+	else
+	{
+		inicio = toDelete->prox;
+	}
 
-
+	cout << toDelete->valor << " removido da fila." << endl;
+	free(toDelete);
 }
 
